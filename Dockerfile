@@ -21,7 +21,7 @@ FROM dahanna/python-alpine-package:pandas-alpine
 # need make or else FileNotFoundError: [Errno 2] No such file or directory: 'make'
 # need py3-numpy-dev else fatal error: numpy/ndarrayobject.h: No such file or directory
 # need libtbb-dev else TBB not found
-RUN apk --no-cache add --virtual build-base llvm9-dev \
+RUN apk --no-cache add --virtual llvm9-dev \
     && find / -name *llvm* \
     && ls /usr/lib/llvm9/bin/llvm-config
 
