@@ -25,6 +25,7 @@ RUN apk --no-cache search --verbose '*llvm*'
 RUN apk --no-cache add --virtual build-base make g++ musl-dev llvm9-dev py3-numpy-dev \
     && apk --no-cache add --virtual libtbb-dev --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && find / -name *llvm* \
+    && ls /usr/lib/llvm9/bin/llvm-config \
     && LLVM_CONFIG=/usr/lib/llvm9/bin/llvm-config pip install --no-cache-dir numba \
     && python -c "import numba" \
     && apk del --no-cache        build-base make g++ musl-dev llvm9-dev libtbb-dev py3-numpy-dev \
