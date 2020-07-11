@@ -23,14 +23,6 @@ FROM dahanna/python-alpine-package:pandas-alpine
 # need libtbb-dev else TBB not found
 RUN apk --no-cache search --verbose '*llvm*'
 RUN apk --no-cache add --virtual build-base make g++ musl-dev llvm9-dev py3-numpy-dev \
-    && apk --no-cache add --virtual libtbb-dev --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && find / -name *llvm* \
-    && ls /usr/lib/llvm9/bin/llvm-config \
-    && LLVM_CONFIG=/usr/lib/llvm9/bin/llvm-config pip install --no-cache-dir numba \
-    && python -c "import numba" \
-    && apk del --no-cache        build-base make g++ musl-dev llvm9-dev libtbb-dev py3-numpy-dev \
-    # OSError: Could not load shared object file: libllvmlite.so
-    && apk --no-cache add llvm9 \
-    && python -c "import numba"
-    # apk del reduced image size from 365MB to .
+    && ls /usr/lib/llvm9/bin/llvm-config
 
