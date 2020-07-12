@@ -1,4 +1,4 @@
-FROM dahanna/alpine-llvm-dockerfile:latest
+FROM dahanna/alpine-llvm-test:latest
 
 # With llvm9-dev installed, /usr/lib/llvm9/bin/llvm-config is not appearing, even though it should
 # according to https://pkgs.alpinelinux.org/contents?branch=edge&name=llvm9-dev&arch=x86_64&repo=main
